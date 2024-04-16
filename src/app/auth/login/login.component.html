@@ -1,0 +1,23 @@
+<div class="login-container">
+    <img class="background-image" src="https://unsplash.com/photos/zYgV-NGZtlA/download" alt="Login Background Image">
+    <div class="login-form-container">
+        <div class="login-box">
+            <h2>Login</h2>
+            <form [formGroup]="loginForm" class="login-form">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" placeholder="Email">
+                    <mat-error *ngIf="loginForm.get('email')?.hasError('required')">Email is required</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Password</mat-label>
+                    <input matInput placeholder="Password" formControlName="password" type="password">
+                    <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Password is required</mat-error>
+                </mat-form-field>
+                <div class="d-flex justify-content-center">
+                    <button mat-raised-button color="primary" (click)="login()">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+            <button mat-icon-button (click)="toggleView()" class="mr-2">
+                <mat-icon>{{ isOneColumn ? 'view_module' : 'view_stream' }}</mat-icon>
+            </button>
+            <button mat-icon-button (click)="addBook()">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+    </div>
+    <div [fxLayout]="isOneColumn ? 'column' : 'row wrap'" [fxLayoutGap]="isOneColumn ? '0px' : '50px'"
+        fxLayoutAlign="start start">
+        <div *ngFor="let book of books">
+            <mat-card class="product-card">
+                <img mat-card-image src="http://localhost:8000/uploads/books/{{book.img}}" alt="{{book.title}}">
+                <mat-card-content>
+                    <mat-card-title>{{book.title}}</mat-card-title>
+                    <p>{{book.desc}}</p>
+                </mat-card-content>
+                <mat-card-actions matColumnDef="actions">
+                    <!-- <button class="btn btn-warning" mat-raised-button (click)="updateTask(element)">Update</button> -->
+                    <button mat-raised-button color="warn" (click)="deleteBook(book.id)">Delete</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>
